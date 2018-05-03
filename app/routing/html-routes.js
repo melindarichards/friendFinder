@@ -9,15 +9,12 @@ module.exports = function(app) {
   // Code handles when users "visit" a page.
   // In each of the following cases the user is shown an HTML page of content
   // ---------------------------------------------------------------------------
-	app.get("/tables", function(req, res) {
-		res.sendFile(path.join(__dirname, "../public/tables.html"));
-	});
 
 	app.get("/survey", function(req, res) {
 		res.sendFile(path.join(__dirname, "../public/survey.html"));
 	});
 
-	  // If no matching route is found default to home
+	  // If no matching route is found, default to home
 	app.get("*", function(req, res) {
 		res.sendFile(path.join(__dirname, "../public/home.html"));
 	});

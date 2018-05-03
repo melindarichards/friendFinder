@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Reservation Page</title>
+  <title>Survey Page</title>
 
   <!-- Latest compiled and minified CSS & JS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -16,7 +16,7 @@
 
   <div class="container">
 
-      <h1 class="text-center"><span class="glyphicon glyphicon-fire"></span> Survey Questions</h1>
+      <h1 class="text-center"><span class="glyphicon glyphicon-heart"></span> Survey Questions</h1>
       <br>
 
 		<div class="row">
@@ -28,83 +28,71 @@
 					<h3>About You</h3>
 				</div>
 				
-			<!-- <div class="panel-body"> -->
+			<div class="panel-body">
 
 				<form role="form">
 
 					<div class="form-group">
 						<label for="survey-name">Name</label>
-						<input type="text" class="form-control" id="survey-name">
+						<input type="text" class="form-control" id="friend-name">
 					</div>
 
 					<div class="form-group">
 						<label for="survey-photo">Link to Photo Image (required) </label>
-						<input type="text" class="form-control" id="survey-photo">
+						<input type="text" class="form-control" id="friend-photo">
 					</div>
 
-						<!-- <div class="container"> -->
+
+						<div class="container">
+
+								<!-- https://www.w3schools.com/tags/tag_select.asp -->
+
+
+<!-- NEED TO DEFINE FRIEND SCORES!!! -->
+
+
 								<h3>Question 1</h3>
 								<p>Would you like to be famous?</p>                                          
-								<div class="dropdown">
-									<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-										Select an option
-									</button>
-									<div class="dropdown-menu">
-										<a class="dropdown-item">1 (strongly disagree)</a>
-										<a class="dropdown-item">2</a>
-										<a class="dropdown-item">3</a>
-										<a class="dropdown-item">4</a>
-										<a class="dropdown-item">5 (strongly agree)</a>
-									</div>
-								</div>
-
+								<select class="dropdownList" id="q1">
+									<option value="">Select an answer</option>
+									<option value="1">1 (strongly disagree)</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5 (strongly agree)</option>
+								</select>
 
 								<h3>Question 2</h3>
-								<p>Before making a telephone call, do you ever rehearse what you are going to say?</p>                                          
-								<div class="dropdown">
-									<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-										Select an option
-									</button>
-									<div class="dropdown-menu">
-										<a class="dropdown-item">1 (strongly disagree)</a>
-										<a class="dropdown-item">2</a>
-										<a class="dropdown-item">3</a>
-										<a class="dropdown-item">4</a>
-										<a class="dropdown-item">5 (strongly agree)</a>
-									</div>
-								</div>
+								<p>Before making a telephone call, do you ever rehearse what you are going to say?</p> <select class="dropdownList" id="q2">
+									<option value="">Select an answer</option>
+									<option value="1">1 (strongly disagree)</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5 (strongly agree)</option>
+								</select>
 
 								<h3>Question 3</h3>
 								<p>Do you have a secret hunch about how you will die?</p>
-								<div class="dropdown">
-									<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-										Select an option
-									</button>
-									<div class="dropdown-menu">
-										<a class="dropdown-item">1 (strongly disagree)</a>
-										<a class="dropdown-item">2</a>
-										<a class="dropdown-item">3</a>
-										<a class="dropdown-item">4</a>
-										<a class="dropdown-item">5 (strongly agree)</a>
-									</div>
-								</div>
-
-
-
+								<select class="dropdownList" id="q3">
+									<option value="">Select an answer</option>
+									<option value="1">1 (strongly disagree)</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5 (strongly agree)</option>
+								</select>
 
 								<!-- https://www.huffingtonpost.com/em-and-lo/36-questions-to-ask-a-dat_b_6463422.html -->
 
-							<!-- </div> -->
-						
-
-
+							</div>
 								<br>
 								<br>
 					<button type="submit" class="btn btn-primary submit">Submit</button>
 				
 				</form>
 
-			<!-- </div> -->
+			</div>
 		</div>
   </div>
 
@@ -115,11 +103,7 @@
     <footer class="footer">
       <div class="container">
 				<p><a href="/api/friends">API Friends Link</a> | 
-					
-					<!-- What link to put here? -->
-					<!-- <a href="https://github.com/afhaque/HotRestaurant"> -->
-						
-						GitHub Repo</a></p>
+					<a href="https://github.com/melindarichards/friendFinder">GitHub Repo</a></p>	
       </div>
     </footer>
 </body>
@@ -138,42 +122,37 @@
 
 			// Here we grab the form elements
 			
-
       var newSurvey = {
-				// friendName $("#friend-name").val().trim(),
-// 		friendPhoto: $("#friend-photo").val().trim(),
-// 		friendScores:[
-
-// *************** ask teacher if scores should be sent as a string or an array
-
 				friendName: $("#friend-name").val().trim(),
-        friendPhoto: $("#friend-photo").val().trim(),
-        friendScores: $("#friend-scores").val().trim()
+				friendPhoto: $("#friend-photo").val().trim(),
+				friendScores: $("#friend-scores").val().trim(),
       };
-
 			console.log(newSurvey);
 
-			// $$$$$ return false;
-
-			// $$$$$ var currentURL = window.location.origin;
 
       // This line is the magic. It"s very similar to the standard ajax function we used.
       // Essentially we give it a URL, we give it the object we want to send, then we have a "callback".
       // The callback is the response of the server. In our case, we set up code in api-routes that "returns" true or false
       // depending on if a tables is available or not.
 
-      $.post("/api/tables", newSurvey,
+// newSurvey is the name of the new object (Bob's name, photo link, and answers). I send that object via the api route to api/friends, which is then added to friend-data.js
+
+      $.post("/api/friends", newSurvey,
         function(data) {
 
-          // If a table is available... tell user they are booked.
-          if (data) {
-            alert("Yay! You are officially booked!");
-          }
+// two different ways
+
+// document.getElementById("mySelect").value
+
+// console log all of the elements of the object (name, link, q1 score, etc.)
+
+
+// https://learn.jquery.com/using-jquery-core/faq/how-do-i-get-the-text-value-of-a-selected-option/
 
           // Clear the form when submitting
           $("#friend-name").val("");
           $("#friend-photo").val("");
-          $("#friend-scores").val("");
+					$("#friend-scores").val("");
 
         });
 
