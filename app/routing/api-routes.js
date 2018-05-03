@@ -49,15 +49,9 @@ module.exports = function (app) {
 	});
 
 
-
-
 // var closestMatch =
 
-
 // res.json(closestMatch);
-
-
-
 
 	// delete
 	// app.post("/api/clear", function() {
@@ -66,6 +60,5 @@ module.exports = function (app) {
 	// 	console.log(friendData);
 
 	// })
-
 
 	}

@@ -121,11 +121,15 @@
       event.preventDefault();
 
 			// Here we grab the form elements
-			
+
       var newSurvey = {
 				friendName: $("#friend-name").val().trim(),
 				friendPhoto: $("#friend-photo").val().trim(),
-				friendScores: $("#friend-scores").val().trim(),
+				friendScores: [
+					$("#q1").val(),
+					$("#q2").val(),
+					$("#q3").val(),
+				]
       };
 			console.log(newSurvey);
 
