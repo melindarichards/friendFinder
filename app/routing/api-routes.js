@@ -36,7 +36,7 @@ module.exports = function (app) {
 	
 		totalFriendScore +=absValue;
 		
-			console.log(totalFriendScore);
+			// console.log(totalFriendScore);
 	}
 
 		// This pushes the final totalFriendScore (after adding in the absolute values for each question) into the array of scores in the variable totalScores.
@@ -44,18 +44,21 @@ module.exports = function (app) {
 	}
 
 	// This is from stack overflow at https://stackoverflow.com/questions/11301438/return-index-of-greatest-value-in-an-array. It loops through each number in the array of the variable totalScores and selects the lowest.
-    var min = totalScores[0];
+    var minScore = totalScores[0];
     var minIndex = 0;
 
-    for (var i = 1; i < totalScores.length; i++) {
-        if (totalScores[i] < min) {
+    for (let i = 0; i < totalScores.length; i++) {
+        if (totalScores[i] < minScore) {
             minIndex = i;
-            min = totalScores[i];
-        }
-    }
+            minScore = totalScores[i];
+				}	
+		}
+		console.log(minScore);
 	});
 
-// var closestMatch =
+// var closestMatchName =
+
+// var closestMatchPhoto = 
 
 // res.json(closestMatch);
 

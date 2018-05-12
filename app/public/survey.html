@@ -16,6 +16,33 @@
 
   <div class="container">
 
+			<!-- Modal -->
+			<div class="modal fade" id="myModal" role="dialog">
+				<div class="modal-dialog">
+				
+					<!-- Modal content-->
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h4 class="modal-title">Your Match</h4>
+						</div>
+						<div class="modal-body">
+							<p>Your most compatible match is___.</p>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+			
+		</div>
+		
+		<!-- https://stackoverflow.com/questions/10626885/passing-data-to-a-bootstrap-modal -->
+
+
+
       <h1 class="text-center"><span class="glyphicon glyphicon-heart"></span> Survey Questions</h1>
       <br>
 
@@ -102,8 +129,8 @@
 					<a href="https://github.com/melindarichards/friendFinder">GitHub Repo</a></p>	
       </div>
     </footer>
-</body>
-</html>
+<!-- </body>
+</html> -->
 
 <!-- BELOW CODE HANDLES HOW FORM DATA IS SENT TO THE SERVER -->
 <script type="text/javascript">
@@ -137,25 +164,27 @@
 
 // newSurvey is the name of the new object (Bob's name, photo link, and answers). I send that object via the api route to api/friends, which is then added to friend-data.js
 
+
+// *********** MODAL *************
+// https://stackoverflow.com/questions/13183630/how-to-open-a-bootstrap-modal-window-using-jquery
+		$(document).ready(function(){
+	   $("#myModal").modal();
+});
+
+// ************ POST new friend data to /api/friends ***************
       $.post("/api/friends", newSurvey,
         function(data) {
-
-// two different ways
-
-// document.getElementById("mySelect").value
-
-// console log all of the elements of the object (name, link, q1 score, etc.)
-
-
-// https://learn.jquery.com/using-jquery-core/faq/how-do-i-get-the-text-value-of-a-selected-option/
-
-          // Clear the form when submitting
-          $("#friend-name").val("");
-          $("#friend-photo").val("");
-					$("#friend-scores").val("");
-
+          $("#friendName").val("");
+          $("#friendPhoto").val("");
+					$("#friendScores").val("");
         });
-
+				
+// ************ Clear the form when submitting ***************
+// https://stackoverflow.com/questions/26479557/jquery-to-clear-form-fields-after-submit-for-text-and-checkbox/29621679				
+				$("form").trigger("reset");
     });
 
 </script>
+
+</body>
+</html>
